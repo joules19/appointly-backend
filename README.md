@@ -58,5 +58,6 @@ Paste the SQL script in the query window and execute it.
 Run the backend application with the following command:
 
 ```bash
-npm start
+npm run build
+npm run start
 ```
