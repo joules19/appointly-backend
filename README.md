@@ -36,3 +36,29 @@ INSERT IGNORE INTO users (username, password, role) VALUES
 ('jonny', '$2b$10$E2Z7z7z7z7z7z7z7z7z7u', 'user'),
 ('sammy', '$2b$10$E2Z7z7z7z7z7z7z7z7z7u', 'user');
 
+
+### 1. **Create Database:**
+
+Run the following commands to create the database (if it doesn't already exist) and use it:
+
+```sql
+CREATE DATABASE IF NOT EXISTS your_database_name;
+USE your_database_name;
+
+### 2. Run the Script:
+You can run the script in the following ways:
+
+Option 1: Using Command Line
+bash
+Copy
+mysql -u username -p your_database_name < schema.sql
+Option 2: Using MySQL Workbench or phpMyAdmin
+Open your MySQL management tool (e.g., MySQL Workbench or phpMyAdmin).
+Paste the SQL script in the query window and execute it.
+
+### 3: Start the Application
+Run the backend application with the following command:
+
+```bash
+Copy
+npm start
