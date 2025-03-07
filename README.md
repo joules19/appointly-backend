@@ -28,13 +28,11 @@ CREATE TABLE IF NOT EXISTS appointments (
 
 -- Insert initial admin users if they don't exist
 INSERT IGNORE INTO users (username, password, role) VALUES
-('admin1', '$2b$10$E2Z7z7z7z7z7z7z7z7z7u', 'admin'),
-('admin2', '$2b$10$E2Z7z7z7z7z7z7z7z7z7u', 'admin');
+('admin', '$2b$10$E2Z7z7z7z7z7z7z7z7z7u', 'admin'), password is password
 
 -- Insert initial regular users if they don't exist
 INSERT IGNORE INTO users (username, password, role) VALUES
-('jonny', '$2b$10$E2Z7z7z7z7z7z7z7z7z7u', 'user'),
-('sammy', '$2b$10$E2Z7z7z7z7z7z7z7z7z7u', 'user');
+('jonny', '$2b$10$E2Z7z7z7z7z7z7z7z7z7u', 'user'), password is password
 
 Run the following commands to create the database (if it doesn't already exist) and use it:
 
