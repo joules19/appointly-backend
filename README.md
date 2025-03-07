@@ -48,7 +48,7 @@ You can run the script in the following ways:
 
 Option 1: Using Command Line
 ```bash
-mysql -u username -p your_database_name < schema.sql
+mysql -u username -p appointment_system < schema.sql
 ```
 Option 2: Using MySQL Workbench or phpMyAdmin
 Open your MySQL management tool (e.g., MySQL Workbench or phpMyAdmin).
