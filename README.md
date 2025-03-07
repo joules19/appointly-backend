@@ -6,8 +6,8 @@
 
 ```sql
 -- Create the database if it doesn't exist
-CREATE DATABASE IF NOT EXISTS your_database_name;
-USE your_database_name;
+CREATE DATABASE IF NOT EXISTS appointment_system;
+USE appointment_system;
 
 -- Create users table if it doesn't exist
 CREATE TABLE IF NOT EXISTS users (
