@@ -15,27 +15,22 @@ export class AppointmentService {
     ) { }
 
     async createAppointment(userData: any, startTime: string, endTime: string) {
-        // Fetch the full user entity by ID
         const user = await this.userRepository.findOne({ where: { id: userData.userId } });
 
         if (!user) {
             throw new NotFoundException('User not found');
         }
 
-        // Convert strings to Date objects
         const start = new Date(startTime);
         const end = new Date(endTime);
 
-        // Validate the booking time
         this.validateBookingTime(start, end);
 
-        // Check if the user already has a booking on the same day
         const existingBooking = await this.checkUserBookingForDay(user.id, start);
         if (existingBooking) {
             throw new ConflictException('User can only have one booking per day');
         }
 
-        // Check for conflicts
         const conflict = await this.appointmentRepository.findOne({
             where: {
                 startTime: Between(start, end),
@@ -47,18 +42,26 @@ export class AppointmentService {
             throw new ConflictException('Time slot already booked');
         }
 
-        // Create and save the appointment with the full user entity
         const appointment = this.appointmentRepository.create({
             startTime: start,
             endTime: end,
-            user, // Pass the full User entity here
+            user,
         });
 
         return this.appointmentRepository.save(appointment);
     }
 
     async findAll() {
-        return this.appointmentRepository.find({ relations: ['user'] });
+        return this.appointmentRepository.find({
+            relations: ['user'],
+            select: {
+                user: {
+                    id: true,
+                    username: true,
+                    role: true,
+                },
+            },
+        });
     }
 
     private validateBookingTime(start: Date, end: Date) {
